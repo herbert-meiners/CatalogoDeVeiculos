@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CatalogoVeiculos.Models.Veiculo>
+
+@{
+    ViewData["Title"] = "Lista de Veículos cadastrados";
+}
+
+<h1>Lista de Veículos</h1>
+
+<table class="table" table-striped>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bloqueado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Renavam)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bloqueado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Placa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Renavam)
+                </td>
+                <td>
+                    <a role="button" class="btn btn-primary" asp-controller="Veiculos" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a role="button" class="btn btn-info" asp-controller="Veiculos" asp-action="Details" asp-route-id="@item.Id">Visualizar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+    <a class="btn btn-primary" role="button" asp-controller="Veiculos" asp-action="Create">Cadastrar Veículo</a>
+</div>
